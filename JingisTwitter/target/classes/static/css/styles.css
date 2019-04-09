@@ -1,0 +1,34 @@
+@charset "ISO-8859-1";
+
+body {
+ color: #14171a;
+ font-size: 14px;
+ line-height: 20px;
+ background-color: powderblue;
+}
+ 
+body {
+ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+ 
+h1 {
+	color: Blue;
+}
+
+p {
+	background-color: powderblue;
+	color: #14171a;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+}
+
+/* Style the submit button */
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+}
+
+/* Style the container for inputs */
+.container {
+  background-color: #f1f1f1;
+  padding: 20px;
+}

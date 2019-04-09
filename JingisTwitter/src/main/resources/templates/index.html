@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Twitter Login page</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" /></script>
+</head>
+
+<script>
+function setAction(action) {
+$("#loginform").attr("action", action);
+//alert($("#loginform").attr("action"));
+}
+</script>
+<body>
+
+<h1>Login to Twitter or input Name and Password and click "Signup"</h1>
+<div th:replace="welcome_template :: mySignedUpMessage" />
+
+
+<form id="loginform" method="post">
+            <table>
+                <tr>
+                    <td>Name:</td>
+                    <td><input type="text" name="username" /></td>
+                    
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="passwd" /></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Login" onclick="setAction('login')"/></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Signup" onclick="setAction('signup')"/></td>
+                </tr>
+            </table>
+ </form>
+</body>
+</html>

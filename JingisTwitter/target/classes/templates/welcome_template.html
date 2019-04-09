@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>My Twitter Page</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js" /></script>
+<script th:src="@{/js/script.js}" /></script>
+
+
+</head>
+<body>
+
+<div th:fragment="mySignedUpMessage">
+	<h1>	<p th:text="${signedUpMessage}">Welcome, Please login or signup! </p></h1>
+</div>
+
+	<div th:fragment="myWelcomeMessage">
+		<p th:text="'Welcome, ' + ${username} + '!'" />
+	</div>
+
+<div th:fragment="myFollowings">
+
+		<tr th:each="mf : ${myFollowingCollections}">
+			<td th:text="${mf.username}">Me</td>
+			<td><input type="submit" value="Unfollow"
+				th:attr="onclick=|appendHiddenInput('unfollowform', 'myfollowing', '${mf.username}')|" />
+			</td>
+		</tr>
+	</div>
+
+	<div th:fragment="possibleFollowings">
+		<tr th:each="pf : ${possibleFollowingCollections}">
+			<td name="possiblefollowing" th:value="${pf.username}"
+				th:text="${pf.username}">Me</td>
+			<td>
+			<input type="submit" value="Following" 
+				th:attr="onclick=|appendHiddenInput('followform', 'potentials', '${pf.username}')|" />
+			</td>
+		</tr>
+	</div>
+
+	
+	<div th:fragment="TweetList">
+		<h1>Tweets list</h1>
+
+		<table>
+			<tr>
+				<th>NAME</th>
+				<th>TIME</th>
+				<th>TWEETS</th>
+			</tr>
+			<!-- Assign the variable tweet as each of the element in twitterCollections -->
+			<tr th:each="tweet : ${twitterCollections}">
+				<td th:text="${tweet.username}">Me</td>
+				<td th:text="${tweet.timestamp}">2019-03-09</td>
+				<td th:text="${tweet.tweets}">I am done</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>

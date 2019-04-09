@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>My Twitter Page</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script th:src="@{/js/script.js}"></script>
+<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+<body>
+<a href="#" th:href="@{/logout}">Log Out</a>
+<div th:replace="welcome_template :: myWelcomeMessage" />
+	<form action="update" method="post">
+		<input type="hidden" name="username" th:value="${username}" />
+		<table>
+			<tr>
+				<td>Status:</td>
+				<td><input type="text" name="mytweet" size="80" maxlength="160" /></td>
+			</tr>
+
+			<tr>
+				<td><input type="submit" value="Update" /></td>
+			</tr>
+		</table>
+	</form> 
+	
+ <h1>Persons you follow</h1>
+	<form id="unfollowform" action="unfollow" method="post" onsubmit="checkParams()">
+	<input type="hidden" name="username" th:value="${username}" />
+		<table  id="unfollow">
+			<tr>
+				<th>NAME</th>
+				<th>ACTION</th>
+			</tr>
+
+			<div th:replace="welcome_template :: myFollowings" />
+		</table>
+	</form>
+	
+	
+ <h1>Do you want to follow</h1>
+	<form id="followform" action="following" method="post">
+	<input type="hidden" name="username" th:value="${username}" />
+		<table>
+			<tr>
+				<th>NAME</th>
+				<th>ACTION</th>
+			</tr>
+
+			<div th:replace="welcome_template :: possibleFollowings" />
+		</table>
+	</form>	
+ 
+
+<div th:replace="welcome_template :: TweetList" /> 
+	
+
+</body>
+</html>
